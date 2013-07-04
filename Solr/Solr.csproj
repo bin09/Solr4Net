@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AE7C6099-B42A-447B-8F60-70815352EBDC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Solr</RootNamespace>
+    <AssemblyName>Solr</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="Castle.Windsor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="HttpWebAdapters, Version=0.4.0.2002, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="SolrNet, Version=0.4.0.2002, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cache\CacheManage.cs" />
+    <Compile Include="Config\ConfigSetting.cs" />
+    <Compile Include="Config\SolrConfig.cs" />
+    <Compile Include="Core\Index\BaseIndex.cs" />
+    <Compile Include="Core\Index\BuyIndex.cs" />
+    <Compile Include="Core\Index\KeywordIndex.cs" />
+    <Compile Include="Core\Index\MemberIndex.cs" />
+    <Compile Include="Core\Index\NewsIndex.cs" />
+    <Compile Include="Core\Index\ProBestIndex.cs" />
+    <Compile Include="Core\Index\ProIndex.cs" />
+    <Compile Include="Core\Index\UpdateLogIndex.cs" />
+    <Compile Include="Core\LoggingConnection.cs" />
+    <Compile Include="Core\SolrHelper.cs" />
+    <Compile Include="DBUtility\BaseSQL.cs" />
+    <Compile Include="DBUtility\DalBuy.cs" />
+    <Compile Include="DBUtility\DalKeyword.cs" />
+    <Compile Include="DBUtility\DalMember.cs" />
+    <Compile Include="DBUtility\DalNews.cs" />
+    <Compile Include="DBUtility\DalProBest.cs" />
+    <Compile Include="DBUtility\DalProSells.cs" />
+    <Compile Include="DBUtility\DalUserLog.cs" />
+    <Compile Include="DBUtility\SQLHelper.cs" />
+    <Compile Include="Helper\EnumHelper.cs" />
+    <Compile Include="Helper\SerializationHelper.cs" />
+    <Compile Include="Helper\Utils.cs" />
+    <Compile Include="Log\Log4Helper.cs" />
+    <Compile Include="Log\LogMsg.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MODEL\ModBuys.cs" />
+    <Compile Include="MODEL\ModKeyword.cs" />
+    <Compile Include="MODEL\ModMember.cs" />
+    <Compile Include="MODEL\ModNews.cs" />
+    <Compile Include="MODEL\ModProduct.cs" />
+    <Compile Include="MODEL\ModUserLog.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="FileConfig\Solr.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SolrNetIntegration\SolrCore.cs" />
+    <Compile Include="SolrNetIntegration\SolrNetFacility.cs" />
+    <Compile Include="SolrNetIntegration\StrictArrayResolver.cs" />
+    <Compile Include="Task\TaskCalls.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FileConfig\Log4.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SolrNet\Castle.Core.dll" />
+    <Content Include="SolrNet\Castle.Windsor.dll" />
+    <Content Include="SolrNet\HttpWebAdapters.dll" />
+    <Content Include="SolrNet\log4net.dll" />
+    <Content Include="SolrNet\Microsoft.Practices.ServiceLocation.dll" />
+    <Content Include="SolrNet\SolrNet.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
