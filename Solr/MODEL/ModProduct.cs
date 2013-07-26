@@ -45,6 +45,20 @@ namespace Solr.MODEL
             get { return model; }
             set { model = value; }
         }
+        private int provinceId;
+        [SolrField("provinceId")]
+        public int ProvinceId
+        {
+            get { return provinceId; }
+            set { provinceId = value; }
+        }
+        private int cityId;
+        [SolrField("cityId")]
+        public int CityId
+        {
+            get { return cityId; }
+            set { cityId = value; }
+        }
         private int memberGrade;
         public int MemberGrade
         {

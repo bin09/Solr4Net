@@ -27,7 +27,7 @@ namespace Solr.DBUtility
         {
             try
             {
-                string sql = string.Format("SELECT TOP " + config.TopCount + " Products_SellsBest.Id,Model,Title,MemberGrade,classParPath,[Content] FROM Products_SellsBest,Mb_Member WHERE Products_SellsBest.Id>{0} AND Mb_Member.Id=Products_SellsBest.MemberId ORDER BY Id ASC", id);
+                string sql = string.Format("SELECT TOP " + config.TopCount + " Products_SellsBest.Id,Model,Products_SellsBest.ProvinceId,Products_SellsBest.CityId,Title,MemberGrade,classParPath,[Content] FROM Products_SellsBest,Mb_Member WHERE Products_SellsBest.Id>{0} AND Mb_Member.Id=Products_SellsBest.MemberId ORDER BY Id ASC", id);
                 return this.ExecuteDataTable(sql);
             }
             catch (Exception ex)
@@ -55,6 +55,8 @@ namespace Solr.DBUtility
                     mod.Content = Utils.ClearHtml(dr["Content"].ToString());
                     mod.MemberGrade = Convert.ToInt32(dr["MemberGrade"]);
                     mod.Model = dr["Model"].ToString();
+                    mod.ProvinceId = Convert.ToInt32(dr["ProvinceId"]);
+                    mod.CityId = Convert.ToInt32(dr["CityId"]);
                     if (mod.MemberGrade == 2)
                         mod.ProBoost = config.SilverBoost;
                     else if (mod.MemberGrade == 3)
